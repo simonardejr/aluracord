@@ -26,7 +26,9 @@ function Title (props) {
 }
 
 export default function PaginaInicial () {
+    const baseUrl = 'https://github.com/'
     const [username, setUsername] = React.useState('simonardejr')
+    const [profilePic, setProfilePic] = React.useState(baseUrl + username + '.png')
     const router = useRouter()
 
     return (
@@ -87,7 +89,11 @@ export default function PaginaInicial () {
                             }}
                             value={username}
                             onChange={function (event) {
-                                setUsername(event.target.value)
+                                const user = event.target.value
+                                setUsername(user)
+                                if (user.length > 2) {
+                                    setProfilePic(baseUrl + user + '.png')
+                                }
                             }}
                         />
                         <Button
@@ -126,7 +132,7 @@ export default function PaginaInicial () {
                                 borderRadius: '50%',
                                 marginBottom: '16px',
                             }}
-                            src={`https://github.com/${username}.png`}
+                            src={profilePic}
                         />
                         <Text
                             variant="body4"
