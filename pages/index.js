@@ -1,5 +1,6 @@
 
 import { Box, Button, Text, TextField, Image } from '@skynexui/components';
+import React from 'react';
 import appConfig from '../config.json';
 
 function GlobalStyle () {
@@ -83,7 +84,7 @@ function Title (props) {
 }
 
 export default function PaginaInicial () {
-    const username = 'simonardejr';
+    const [username, setUsername] = React.useState('simonardejr')
 
     return (
         <>
@@ -137,6 +138,10 @@ export default function PaginaInicial () {
                                     mainColorHighlight: appConfig.theme.colors.primary[500],
                                     backgroundColor: appConfig.theme.colors.neutrals[800],
                                 },
+                            }}
+                            value={username}
+                            onChange={function (event) {
+                                setUsername(event.target.value)
                             }}
                         />
                         <Button
@@ -196,7 +201,7 @@ export default function PaginaInicial () {
                     backgroundColor: appConfig.theme.colors.neutrals[900],
                     padding: '10px',
                     borderRadius: '1000px'
-                }}><a href="https://github.com/simonardejr" class="github-link">💚 Simonarde Lima</a></Box>
+                }}><a href="https://github.com/simonardejr" className="github-link">💚 Simonarde Lima</a></Box>
             </Box>
         </>
     );
